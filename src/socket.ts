@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io("https://spotlink-backend.onrender.com/", {
+const socket = io("https://spotlink-backend.onrender.com/api", {
   withCredentials: true,
 });
 
