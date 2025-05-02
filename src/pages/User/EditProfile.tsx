@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://spotlink-backend.onrender.com/api";
 
 const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext)!;
