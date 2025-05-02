@@ -44,7 +44,7 @@ const Register = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-black text-white">
       <h1 className="text-2xl mb-4">Register</h1>
-      {error && <p className="text-red-500">{error}</p>} {/* ✅ Display error if exists */}
+      {error && <p className="text-red-500">{error}</p>}
       <form onSubmit={handleRegister} className="flex flex-col space-y-4">
         <input
           type="text"
