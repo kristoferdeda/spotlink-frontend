@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import socket from "../socket";
+import api from "../api";
 
 interface Message {
   senderId: string;
@@ -32,7 +33,7 @@ const FloatingChat = () => {
 
   const fetchConversations = async () => {
     try {
-      const res = await axios.get("/api/chat/conversations/summary", {
+      const res = await axios.get("/chat/conversations/summary", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -105,7 +106,7 @@ const FloatingChat = () => {
             return updated;
           } else {
             axios
-              .get(`/api/chat/user/${data.senderId}`, {
+              .get(`/chat/user/${data.senderId}`, {
                 headers: { Authorization: `Bearer ${token}` },
               })
               .then((res) => {
@@ -148,7 +149,7 @@ const FloatingChat = () => {
 
   const loadMessages = async (chatUser: ChatUser) => {
     try {
-      const res = await axios.get(`/api/chat/${chatUser._id}`, {
+      const res = await axios.get(`/chat/${chatUser._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -188,7 +189,7 @@ const FloatingChat = () => {
     if (!confirm("Clear this conversation?")) return;
 
     try {
-      await axios.post(`/api/chat/clear/${selectedUser._id}`, null, {
+      await axios.post(`/chat/clear/${selectedUser._id}`, null, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessages([]);
@@ -202,7 +203,7 @@ const FloatingChat = () => {
     if (!confirm("Delete this conversation from your list?")) return;
 
     try {
-      await axios.post(`/api/chat/clear/${userId}`, null, {
+      await axios.post(`/chat/clear/${userId}`, null, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
