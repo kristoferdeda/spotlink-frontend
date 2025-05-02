@@ -33,7 +33,7 @@ const FloatingChat = () => {
 
   const fetchConversations = async () => {
     try {
-      const res = await axios.get("/chat/conversations/summary", {
+      const res = await api.get("/chat/conversations/summary", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -105,7 +105,7 @@ const FloatingChat = () => {
               );
             return updated;
           } else {
-            axios
+            api
               .get(`/chat/user/${data.senderId}`, {
                 headers: { Authorization: `Bearer ${token}` },
               })
@@ -149,7 +149,7 @@ const FloatingChat = () => {
 
   const loadMessages = async (chatUser: ChatUser) => {
     try {
-      const res = await axios.get(`/chat/${chatUser._id}`, {
+      const res = await api.get(`/chat/${chatUser._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -189,7 +189,7 @@ const FloatingChat = () => {
     if (!confirm("Clear this conversation?")) return;
 
     try {
-      await axios.post(`/chat/clear/${selectedUser._id}`, null, {
+      await api.post(`/chat/clear/${selectedUser._id}`, null, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessages([]);
@@ -203,7 +203,7 @@ const FloatingChat = () => {
     if (!confirm("Delete this conversation from your list?")) return;
 
     try {
-      await axios.post(`/chat/clear/${userId}`, null, {
+      await api.post(`/chat/clear/${userId}`, null, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
