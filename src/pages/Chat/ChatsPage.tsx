@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../api";
 import socket from "../../socket";
 
 interface ChatUser {
@@ -23,8 +23,8 @@ const ChatsPage = () => {
   const userId = localStorage.getItem("userId") || "";
 
   const fetchConversations = () => {
-    axios
-      .get("/api/chat/conversations/summary", {
+    api
+      .get("/chat/conversations/summary", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -77,7 +77,7 @@ const ChatsPage = () => {
         setUsers(updated);
       } else {
         try {
-          const res = await axios.get(`/api/chat/user/${data.senderId}`, {
+          const res = await api.get(`/chat/user/${data.senderId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
 
@@ -114,7 +114,7 @@ const ChatsPage = () => {
     if (!confirm("Are you sure you want to delete this conversation?")) return;
 
     try {
-      await axios.post(`/api/chat/clear/${userIdToDelete}`, null, {
+      await api.post(`/chat/clear/${userIdToDelete}`, null, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
