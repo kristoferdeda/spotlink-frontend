@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import socket from "../../socket";
-import axios from "axios";
+import api from "../../api";
 
 interface Message {
   senderId: string;
@@ -35,8 +35,8 @@ const ChatPage = () => {
     socket.emit("join_room", userId);
 
     if (!chatPartner) {
-      axios
-        .get(`/api/chat/user/${chatWithUserId}`, {
+      api
+        .get(`/chat/user/${chatWithUserId}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -47,8 +47,8 @@ const ChatPage = () => {
         });
     }
 
-    axios
-      .get(`/api/chat/${chatWithUserId}`, {
+    api
+      .get(`/chat/${chatWithUserId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -94,7 +94,7 @@ const ChatPage = () => {
     if (!chatWithUserId || !confirm("Are you sure you want to clear this chat?")) return;
 
     try {
-      await axios.post(`/api/chat/clear/${chatWithUserId}`, null, {
+      await api.post(`/chat/clear/${chatWithUserId}`, null, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessages([]);
