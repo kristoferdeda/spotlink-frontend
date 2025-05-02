@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { GoogleMap, InfoWindow, useLoadScript } from "@react-google-maps/api";
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://spotlink-backend.onrender.com/api";
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY!;
 const libraries: ("marker")[] = ["marker"];
 const defaultCenter = { lat: 40.7128, lng: -74.006 };
