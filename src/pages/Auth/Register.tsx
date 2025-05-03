@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const auth = useContext(AuthContext);
@@ -72,7 +73,10 @@ const Register = () => {
         </button>
       </form>
       <p className="mt-4 text-gray-400">
-        Already have an account? <a href="/login" className="text-blue-400 hover:underline">Login</a>
+        Already have an account?{" "}
+        <Link to="/login" className="text-blue-400 hover:underline">
+          Logim
+        </Link>
       </p>
     </div>
   );
