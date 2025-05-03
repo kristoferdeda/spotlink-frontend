@@ -75,7 +75,7 @@ const Register = () => {
       <p className="mt-4 text-gray-400">
         Already have an account?{" "}
         <Link to="/login" className="text-blue-400 hover:underline">
-          Logim
+          Login
         </Link>
       </p>
     </div>
