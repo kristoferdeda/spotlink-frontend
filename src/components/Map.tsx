@@ -173,17 +173,6 @@ const Map = () => {
     mapRef.current = map;
     const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
     setAdvancedMarkerElement(() => AdvancedMarkerElement);
-
-    new AdvancedMarkerElement({
-      map,
-      position: currentLocation,
-      title: "You are here",
-      content: new PinElement({
-        background: "#4285F4",
-        glyphColor: "#fff",
-        borderColor: "#2a56c6",
-      }).element,
-    });
   };
 
   const userId = localStorage.getItem("userId");
