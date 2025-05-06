@@ -225,7 +225,7 @@ const Map = () => {
           setFormOpenType("map");
         }}
         onLoad={handleMapLoad}
-        options={{ mapId: "192892a3c2c4208d", disableDefaultUI: false, clickableIcons: false }}
+        options={{ mapId: "192892a3c2c4208d", disableDefaultUI: false, clickableIcons: false, gestureHandling: "greedy" }}
       >
         {selectedSpot && (
           <InfoWindow
