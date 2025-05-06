@@ -51,7 +51,7 @@ const Map = () => {
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
   }, []);
-  
+
   useEffect(() => {
     if (!mapRef.current || !AdvancedMarkerElement || !currentLocation) return;
 
@@ -68,7 +68,9 @@ const Map = () => {
       }).element,
     });
 
-    return () => marker.map = null;
+    return () => {
+      marker.map = null;
+    };
   }, [currentLocation, AdvancedMarkerElement]);
   
   const fetchNearbySpots = async (lat: number, lng: number, radius: number = nearbyRadius) => {
