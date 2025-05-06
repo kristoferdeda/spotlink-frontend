@@ -52,7 +52,25 @@ const Map = () => {
     );
   }, []);
   
+  useEffect(() => {
+    if (!mapRef.current || !AdvancedMarkerElement || !currentLocation) return;
 
+    const { lat, lng } = currentLocation;
+
+    const marker = new AdvancedMarkerElement({
+      map: mapRef.current,
+      position: { lat, lng },
+      title: "You are here",
+      content: new google.maps.marker.PinElement({
+        background: "#4285F4",
+        glyphColor: "#fff",
+        borderColor: "#2a56c6",
+      }).element,
+    });
+
+    return () => marker.map = null;
+  }, [currentLocation, AdvancedMarkerElement]);
+  
   const fetchNearbySpots = async (lat: number, lng: number, radius: number = nearbyRadius) => {
     try {
       const res = await axios.get<{ spots: ParkingSpot[] }>(
