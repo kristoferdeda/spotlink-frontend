@@ -171,7 +171,7 @@ const Map = () => {
 
   const handleMapLoad = async (map: google.maps.Map) => {
     mapRef.current = map;
-    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
     setAdvancedMarkerElement(() => AdvancedMarkerElement);
   };
 
